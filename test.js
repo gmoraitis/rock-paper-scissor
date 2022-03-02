@@ -74,43 +74,40 @@ function getResult() {
 }
 
 function changeColor() {
+    var element = document.getElementById("result");
     if (result === 'you win!') {
-        var element = document.getElementById("result");
+        element.classList.remove('lost')
+        element.classList.remove('draw')
         element.classList.add("win");
     }
-    if (result === 'you lost!') {
-        var element = document.getElementById("result");
+    else if (result === 'you lost!') {
+        element.classList.remove('win')
+        element.classList.remove('draw')
         element.classList.add("lost");
     }
 
-    if (result === 'its a draw!') {
-        var element = document.getElementById("result");
+    else if (result === 'its a draw!') {
+        element.classList.remove('win')
+        element.classList.remove('lost')
         element.classList.add("draw");
     }
 }
 
 function stats() {
-    
+
     if (result === 'you win!') {
         countWin++
-
-        console.log(countWin)
-
     } else if (result === 'you lost!') {
         countLoose++
-
-        console.log(countLoose)
-
     } else if (result === 'its a draw!') {
         countDraw++
-        console.log(countDraw)
     }
 
     winsDisplay.innerHTML = countWin
     looseDisplay.innerHTML = countLoose
     drawDisplay.innerHTML = countDraw
     gameDisplay.innerHTML = game
-    game ++
+    game++
 
 
 }
