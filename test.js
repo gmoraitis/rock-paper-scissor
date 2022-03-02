@@ -1,9 +1,17 @@
 const computerDisplay = document.getElementById('computer');
 const userDisplay = document.getElementById('user');
 const resultDisplay = document.getElementById('result');
+const winsDisplay = document.getElementById('wins');
+const looseDisplay = document.getElementById('loose');
+const drawDisplay = document.getElementById('draw');
+const gameDisplay = document.getElementById('game');
 let userChoise;
 let computerChoise;
 let result;
+let countDraw = 0;
+let countWin = 0;
+let countLoose = 0;
+let game = 1;
 
 // bring all the possible choises (button clicks) in the js document 
 // with query selector
@@ -18,6 +26,7 @@ choises.forEach(choise => choise.addEventListener('click', (e) => {
     // for each click we fire up the getresult function
     getResult()
     changeColor()
+    stats()
 }))
 
 
@@ -71,12 +80,39 @@ function changeColor() {
     }
     if (result === 'you lost!') {
         var element = document.getElementById("result");
-        element.classList.add("lost");}
-    
-    if(result === 'its a draw!'){
+        element.classList.add("lost");
+    }
+
+    if (result === 'its a draw!') {
         var element = document.getElementById("result");
-        element.classList.add("draw");}
+        element.classList.add("draw");
+    }
+}
+
+function stats() {
     
+    if (result === 'you win!') {
+        countWin++
+
+        console.log(countWin)
+
+    } else if (result === 'you lost!') {
+        countLoose++
+
+        console.log(countLoose)
+
+    } else if (result === 'its a draw!') {
+        countDraw++
+        console.log(countDraw)
+    }
+
+    winsDisplay.innerHTML = countWin
+    looseDisplay.innerHTML = countLoose
+    drawDisplay.innerHTML = countDraw
+    gameDisplay.innerHTML = game
+    game ++
+
+
 }
 
 
